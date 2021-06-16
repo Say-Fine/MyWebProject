@@ -28,5 +28,6 @@ namespace MyWeb.DAL
         public virtual DbSet<MyUser> MyUser { get; set; }
         public virtual DbSet<ProcessTask> ProcessTask { get; set; }
         public virtual DbSet<CollectionProcess> CollectionProcess { get; set; }
+        public virtual DbSet<MenuInfo> MenuInfo { get; set; }
     }
 }

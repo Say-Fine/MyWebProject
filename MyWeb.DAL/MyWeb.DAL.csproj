@@ -53,6 +53,9 @@
     <Compile Include="CollectionProcess.cs">
       <DependentUpon>MyEFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MenuInfo.cs">
+      <DependentUpon>MyEFModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MyEFModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

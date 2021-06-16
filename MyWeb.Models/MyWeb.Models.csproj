@@ -42,9 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\LoginUserDto.cs" />
+    <Compile Include="DTO\MenuInfoDto.cs" />
     <Compile Include="DTO\PostDataDto.cs" />
     <Compile Include="DTO\ResultData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyWeb.DAL\MyWeb.DAL.csproj">
+      <Project>{A6339136-4645-4641-84D8-698128B8EC3C}</Project>
+      <Name>MyWeb.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

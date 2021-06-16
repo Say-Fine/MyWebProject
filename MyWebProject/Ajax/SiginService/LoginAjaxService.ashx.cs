@@ -21,18 +21,36 @@ namespace MyWebProject.Ajax.SiginService
         public void ProcessRequest(HttpContext context)
         {
             string action = context.Request.QueryString["action"];
-            if (action == "isLogin")
+            ResultData result = null;
+            switch (action)
             {
-                var data = JsonConvert.DeserializeObject<LoginUserDto>(context.Request.Form["data"]);
-                var result = _service.IsSigin(data);
-                if (result.Success)
-                {
-                    context.Session["LoginUserInfo"] = result.Data;
-                }
-                context.Response.Write(JsonConvert.SerializeObject(result));
-                return;
+                case "isLogin":
+                    var data = JsonConvert.DeserializeObject<LoginUserDto>(context.Request.Form["data"]);
+                    result = _service.IsSigin(data);
+                    if (result.Success)
+                    {
+                        context.Session["LoginUserInfo"] = result.Data;
+                    }
+                    break;
+                case "getMenu":
+                    if (context.Session["MenuList"] == null)
+                    {
+                        result = _service.GetMenuList();
+                        if (result.Success == true)
+                        {
+                            context.Session["MenuList"] = result.Data;
+                        }
+                    }
+                    else
+                    {
+                        result = new ResultData { Success = true, Msg = string.Empty, Data = context.Session["MenuList"] };
+                    }
+                    break;
+                default:
+                    result = new ResultData { Success = false, Msg = string.Format("请求路径{0}不存在", action), Data = null };
+                    break;
             }
-            context.Response.Write(JsonConvert.SerializeObject(new { Success = false, Msg = string.Format("请求路径{0}不存在", action) }));
+            context.Response.Write(JsonConvert.SerializeObject(result));
         }
 
         public bool IsReusable

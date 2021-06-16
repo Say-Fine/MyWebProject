@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="MyDBModel.MyUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDBModel.ProcessTask" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="MyDBModel.CollectionProcess" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="MyDBModel.MenuInfo" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

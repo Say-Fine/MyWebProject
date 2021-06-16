@@ -16,6 +16,17 @@
           <Property Name="Marget" Type="varchar(max)" />
           <Property Name="RealName" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="MenuInfo">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ParentId" Type="uniqueidentifier" />
+          <Property Name="Sort" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PageUrl" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsDisable" Type="int" />
+        </EntityType>
         <EntityType Name="MyUser">
           <Key>
             <PropertyRef Name="UserID" />
@@ -41,6 +52,7 @@
         </EntityType>
         <EntityContainer Name="MyDBModelStoreContainer">
           <EntitySet Name="CollectionProcess" EntityType="Self.CollectionProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuInfo" EntityType="Self.MenuInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MyUser" EntityType="Self.MyUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProcessTask" EntityType="Self.ProcessTask" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -62,6 +74,7 @@
           <EntitySet Name="MyUser" EntityType="Self.MyUser" />
           <EntitySet Name="ProcessTask" EntityType="MyDBModel.ProcessTask" />
           <EntitySet Name="CollectionProcess" EntityType="MyDBModel.CollectionProcess" />
+          <EntitySet Name="MenuInfo" EntityType="MyDBModel.MenuInfo" />
         </EntityContainer>
         <EntityType Name="ProcessTask">
           <Key>
@@ -86,6 +99,17 @@
           <Property Name="CollDate" Type="DateTime" Precision="3" />
           <Property Name="Marget" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="RealName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MenuInfo">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Guid" Nullable="false" />
+          <Property Name="MenuName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Guid" />
+          <Property Name="Sort" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PageUrl" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsDisable" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -127,6 +151,18 @@
                 <ScalarProperty Name="CollName" ColumnName="CollName" />
                 <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
                 <ScalarProperty Name="CollectionProcessID" ColumnName="CollectionProcessID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuInfo">
+            <EntityTypeMapping TypeName="MyDBModel.MenuInfo">
+              <MappingFragment StoreEntitySet="MenuInfo">
+                <ScalarProperty Name="IsDisable" ColumnName="IsDisable" />
+                <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

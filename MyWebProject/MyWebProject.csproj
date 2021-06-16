@@ -98,6 +98,7 @@
     <Content Include="js\Bootstrap\Chart.min.js" />
     <Content Include="js\Bootstrap\templatemo_script.js" />
     <Content Include="js\Index\Index.js" />
+    <Content Include="js\Index\Main.js" />
     <Content Include="js\Index\ProcessDetail.js" />
     <Content Include="js\Tools\FormHelper.js" />
     <Content Include="layui\css\layui.css" />

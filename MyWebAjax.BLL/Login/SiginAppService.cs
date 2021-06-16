@@ -12,10 +12,10 @@ using System.Web.SessionState;
 
 namespace MyWebAjax.BLL.Login
 {
-    public class SiginAppService: BaseAppService
+    public class SiginAppService : BaseAppService
     {
         ToolsHelper tools = new ToolsHelper();
-        
+        private MyDBEntitiesModel _entitys = new MyDBEntitiesModel();
         /// <summary>
         /// 登陆
         /// </summary>
@@ -27,13 +27,38 @@ namespace MyWebAjax.BLL.Login
                 return FaildData("没有用户信息");
             }
             string pwd = tools.Md5Serialize(loginUer.Password);
-            MyDBEntitiesModel entitys = new MyDBEntitiesModel();
-            var myUser = entitys.MyUser.Where(a => a.UserCode == loginUer.UserName && a.UserPassword == pwd).FirstOrDefault();
+            var myUser = _entitys.MyUser.Where(a => a.UserCode == loginUer.UserName && a.UserPassword == pwd).FirstOrDefault();
             if (myUser != null)
             {
                 return SuccessData(myUser);
             }
             return FaildData("用户名或密码不存在");
+        }
+
+        /// <summary>
+        /// 获取菜单
+        /// </summary>
+        /// <returns></returns>
+        public ResultData GetMenuList()
+        {
+            var allMenu = _entitys.MenuInfo.Where(a => a.IsDisable == 0).OrderBy(a => a.Sort).ToList();
+            if (allMenu != null && allMenu.Any())
+            {
+                List<MenuInfoDto> menuInfoList = new List<MenuInfoDto>();
+
+                foreach (var menu in allMenu.Where(a => a.ParentId == null).OrderBy(a => a.Sort).ToList())
+                {
+                    menuInfoList.Add(new MenuInfoDto
+                    {
+                        MenuId = menu.MenuId,
+                        MenuName = menu.MenuName,
+                        Sort = menu.Sort,
+                        childList = allMenu.Where(a => a.ParentId == menu.MenuId).OrderBy(a => a.Sort).ToList()
+                    });
+                }
+                return SuccessData(menuInfoList);
+            }
+            return FaildData("没有查询到菜单数据");
         }
     }
 }
