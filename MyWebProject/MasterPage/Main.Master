@@ -1,0 +1,126 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.Master.cs" Inherits="MyWebProject.MasterPage.Site1" %>
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="<%=Page.ResolveClientUrl("~/css/Bootstrap/templatemo_main.css")%>" type="text/css">
+    <script src="<%=Page.ResolveClientUrl("~/js/JQuery3.6.js")%>"></script>
+    <script src="<%=Page.ResolveClientUrl("~/js/Bootstrap/bootstrap.min.js")%>"></script>
+    <script src="<%=Page.ResolveClientUrl("~/js/Bootstrap/Chart.min.js")%>"></script>
+    <script src="<%=Page.ResolveClientUrl("~/js/Bootstrap/templatemo_script.js")%>"></script>
+    <script src="<%=Page.ResolveClientUrl("~/js/Tools/Utility.js")%>"></script>
+    <script src="<%=Page.ResolveClientUrl("~/js/BaseAjax.js")%>"></script>
+    <script src="<%=Page.ResolveClientUrl("~/js/Tools/DataGridHelper.js")%>"></script>
+    <script src="<%=Page.ResolveClientUrl("~/js/Tools/FormHelper.js")%>"></script>
+    <script src="<%=Page.ResolveClientUrl("~/My97DatePicker/WdatePicker.js")%>"></script>
+    <link rel="shortcut icon" href="#" />
+</head>
+<body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <div class="logo">
+                <h1>Dashboard - Admin Template</h1>
+            </div>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </div>
+    <div class="template-page-wrapper">
+        <div class="navbar-collapse collapse templatemo-sidebar">
+            <ul class="templatemo-sidebar-menu">
+                <li>
+                    <nav class="navbar navbar-light bg-light" style="margin-top: -30px;">
+                        <a class="navbar-brand" href="#">
+                            <img src="/img/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                            Bootstrap
+                        </a>
+                    </nav>
+                </li>
+                <li class="sub open">
+                    <a href="javascript:;" class="menuClick">
+                        <i class="fa fa-database"></i>系统管理
+                        <div class="pull-right" open="open">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                            </svg>
+                        </div>
+                    </a>
+                    <ul class="templatemo-submenu">
+                        <li class="active"><a href="/Views/Index/Index.aspx">任务设置</a></li>
+                        <li class=""><a href="/MasterPage/Main.html">测试地址</a></li>
+                    </ul>
+                </li>
+                <li class="sub">
+                    <a href="javascript:;" onclick="" class="menuClick">
+                        <i class="fa fa-database"></i>执行结果管理
+                        <div class="pull-right">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                            </svg>
+                        </div>
+                    </a>
+                    <ul class="templatemo-submenu">
+                        <li class=""><a href="/Views/Task/CollectionList.aspx">采集结果</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="templatemo-content-wrapper">
+            <div class="templatemo-content">
+                <ol class="breadcrumb">
+                    <li><a href="/Views/Index/Index.aspx">系统管理</a></li>
+                    <li>任务设置</li>
+                </ol>
+                <div class="row">
+                    <div class="col-md-12">
+                        <asp:ContentPlaceHolder ID="content" runat="server">
+                            <%-- 页面显示内容 --%>
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Are you sure you want to sign out?</h4>
+          </div>
+          <div class="modal-footer">
+            <a href="sign-in.html" class="btn btn-primary">Yes</a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">   
+
+        $('.menuClick').click(function () {
+            var iconDom = $($(this).find("div[class=pull-right]"));
+            if (iconDom) {
+                if (iconDom.attr("open") === "open") {
+                    iconDom.html("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-caret-right-fill\" viewBox=\"0 0 16 16\">"
+                        + "<path d=\"m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z\" /></svg>");
+                    iconDom.removeAttr("open");
+                } else {
+                    iconDom.html('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">'
+                        + '<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" /></svg>');
+                    iconDom.attr("open", "open");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
