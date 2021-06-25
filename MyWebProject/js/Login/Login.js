@@ -28,7 +28,7 @@ userLogin = function () {
         action: "/Ajax/SiginService/LoginAjaxService.ashx?action=isLogin",
         data: { UserName: userName, Password: passWord },/**请求参数*/
         success: function () {
-            window.location.replace("/Views/Index/Index.aspx");
+            window.location.replace("/MasterPage/Main.html");
         }
     });
 }

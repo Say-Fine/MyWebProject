@@ -34,24 +34,7 @@
             <div class="layui-side-scroll">
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" id="navMenu" style="margin-right: 10px;">
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a href="javascript:;">任务管理</a>
-                        <dl class="layui-nav-child">
-                            <dd class="layui-this"><a href="javascript:;" onclick="bindIframe('/Views/Index/TestPage.html')">任务设置</a></dd>
-                            <dd><a href="javascript:;" id="ProcessDetail" onclick="bindIframe('/Views/Index/ProcessDetail.html')">选项二</a></dd>
-                            <dd><a href="javascript:;">选项三</a></dd>
-                            <dd><a href="">跳转项</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a href="javascript:;">任务管理2</a>
-                        <dl class="layui-nav-child">
-                            <dd class="layui-this"><a href="javascript:;" onclick="bindIframe('/Views/Index/TestPage.html')">任务设置</a></dd>
-                            <dd><a href="javascript:;" id="ProcessDetail" onclick="bindIframe('/Views/Index/ProcessDetail.html')">选项二</a></dd>
-                            <dd><a href="javascript:;">选项三</a></dd>
-                            <dd><a href="">跳转项</a></dd>
-                        </dl>
-                    </li>
+                    <!-- 动态生成菜单-->
                 </ul>
             </div>
         </div>
@@ -64,25 +47,5 @@
             使用iframe框架的静态页面
         </div>
     </div>
-    <script>
-        function bindIframe(uri) {
-            $("#demoAdmin").attr("src", uri);
-        }
-        //JS
-        //layui.use('element', function () {
-        //    var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-
-        //    //监听导航点击
-        //    element.on('nav(demo)', function (elem) {
-        //        if (elem != null && elem.length > 0) {
-        //            if (elem[0].id == "ProjSet") {
-        //                $("#demoAdmin").attr("src", "/Views/Index/TestPage.html");
-        //            } else if (elem[0].id == "ProcessDetail") {
-        //                $("#demoAdmin").attr("src", "/Views/Index/ProcessDetail.aspx");
-        //            }
-        //        }
-        //    });
-        //});
-    </script>
 </body>
 </html>

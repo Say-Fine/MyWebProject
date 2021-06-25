@@ -1,6 +1,5 @@
 ﻿$(function () {
     loadMenu();
-
 });
 var loadMenu = function () {
     baseFunc.PostAjax({
@@ -23,6 +22,11 @@ var loadMenu = function () {
                     menu += '</li>';
                 });
                 $("#navMenu").html(menu);
+                layui.use('element', function () {
+                    //需要对菜单动态进行初始化，否则没有效果
+                    var element = layui.element;
+                    element.init();
+                });
             }
         },
         error: function () {
@@ -30,3 +34,8 @@ var loadMenu = function () {
         }
     });
 };
+
+function bindIframe(uri) {
+    $("#demoAdmin").attr("src", uri);
+}
+
