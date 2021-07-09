@@ -46,6 +46,18 @@ namespace MyWebProject.Ajax.SiginService
                         result = new ResultData { Success = true, Msg = string.Empty, Data = context.Session["MenuList"] };
                     }
                     break;
+                case "getParentMenu":
+                    Guid? parentId = null;
+                    if(Guid.TryParse(context.Request.Form["ParentId"], out Guid res))
+                    {
+                        parentId = res;
+                    }
+                    result = _service.GetParentMenuList(parentId);
+                    break;
+                case "loginOut":
+                    context.Session.Clear();
+                    result = new ResultData { Success = true, Msg = string.Empty, Data = null };
+                    break;
                 default:
                     result = new ResultData { Success = false, Msg = string.Format("请求路径{0}不存在", action), Data = null };
                     break;

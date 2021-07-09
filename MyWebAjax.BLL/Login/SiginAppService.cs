@@ -60,5 +60,23 @@ namespace MyWebAjax.BLL.Login
             }
             return FaildData("没有查询到菜单数据");
         }
+
+        /// <summary>
+        /// 获取父级菜单
+        /// </summary>
+        /// <returns></returns>
+        public ResultData GetParentMenuList(Guid? parentId)
+        {
+            List<MenuInfo> allMenu = new List<MenuInfo>();
+            if (!parentId.HasValue || parentId.Value == Guid.Empty)
+            {
+                allMenu = _entitys.MenuInfo.Where(a => a.IsDisable == 0).OrderBy(a => a.Sort).ToList();
+            }
+            else
+            {
+                allMenu = _entitys.MenuInfo.Where(a => a.IsDisable == 0 && a.ParentId == parentId).OrderBy(a => a.Sort).ToList();
+            }
+            return SuccessData(allMenu);
+        }
     }
 }

@@ -1,5 +1,19 @@
 ﻿$(function () {
     loadMenu();
+    $("#loginOut").on("click", function () {
+        layer.confirm('确定退出登陆吗？', { icon: 3, title: '提示' }, function (index) {
+            baseFunc.PostAjax({
+                action: "/Ajax/SiginService/LoginAjaxService.ashx?action=loginOut",
+                success: function (result) {
+                    window.location.replace("/Login.html");
+                    layer.close(index);
+                },
+                error: function () {
+                    layer.close(index);
+                }
+            });
+        });
+    });
 });
 var loadMenu = function () {
     baseFunc.PostAjax({

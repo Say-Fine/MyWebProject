@@ -37,9 +37,6 @@
             1: "执行中",
             2: "执行失败"
         }
-        layui.config({
-            version: '1623071932647' //为了更新 js 缓存，可忽略
-        });
 
         //加载模块
         layui.use(function () { //亦可加载特定模块：layui.use(['layer', 'laydate', function(){
@@ -48,13 +45,6 @@
                 , laypage = layui.laypage //分页
                 , table = layui.table //表格
                 , element = layui.element //元素操作
-
-            //监听Tab切换
-            //element.on('tab(demo)', function(data){
-            //  layer.tips('切换了 '+ data.index +'：'+ this.innerHTML, this, {
-            //    tips: 1
-            //  });
-            //});
 
             //执行一个 table 实例
             table.render({
@@ -76,7 +66,6 @@
                 cols: [[
                     //表头
                     { type: 'checkbox', fixed: 'left' },
-                    { field: 'ProcessTaskID', title: '任务主键', fixed: 'left', hide: true },
                     { field: 'ProcessTaskName', title: '任务名称' },
                     { field: 'BackgroudTaskName', title: '后台方法名' },
                     {
