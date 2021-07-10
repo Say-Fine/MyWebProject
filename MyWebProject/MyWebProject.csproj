@@ -100,6 +100,7 @@
     <Content Include="js\Index\Index.js" />
     <Content Include="js\Index\Main.js" />
     <Content Include="js\Index\ProcessDetail.js" />
+    <Content Include="js\SystemMng\MenuEdit.js" />
     <Content Include="js\SystemMng\MenuSetting.js" />
     <Content Include="js\Tools\FormHelper.js" />
     <Content Include="layui\css\layui.css" />
@@ -143,6 +144,7 @@
     <Content Include="js\Tools\Utility.js" />
     <Content Include="Login.html" />
     <Content Include="Views\Index\ProcessSetting.html" />
+    <Content Include="Views\SystemMng\MenuEidt.html" />
     <Content Include="Views\SystemMng\MenuSetting.html" />
     <Content Include="Views\Task\CollectionList.aspx" />
     <Content Include="Views\Index\Index.aspx" />
